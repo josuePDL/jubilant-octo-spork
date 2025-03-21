@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analy, te amo mucho</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #fff8dc;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .envelope {
+            width: 80%;
+            max-width: 250px;
+            height: 150px;
+            background-color: #f4a261;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .envelope:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 50% solid transparent;
+            border-right: 50% solid transparent;
+            border-bottom: 75px solid #e76f51;
+        }
+        .bouquet-container {
+            position: relative;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            max-width: 90%;
+        }
+        .bouquet {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            background: pink;
+            padding: 30px;
+            border-radius: 50px 50px 10px 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            max-width: 100%;
+        }
+        .flower {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            cursor: pointer;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .petal {
+            position: absolute;
+            width: 25px;
+            height: 40px;
+            background-color: yellow;
+            border-radius: 50%;
+        }
+        .petal:nth-child(1) { transform: rotate(0deg) translateY(-10px); }
+        .petal:nth-child(2) { transform: rotate(45deg) translateY(-10px); }
+        .petal:nth-child(3) { transform: rotate(90deg) translateY(-10px); }
+        .petal:nth-child(4) { transform: rotate(135deg) translateY(-10px); }
+        .center {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: orange;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .stem {
+            width: 4px;
+            height: 60px;
+            background-color: green;
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+        }
+    </style>
+</head>
+<body>
+    <div class="envelope" onclick="openEnvelope()">
+        📩 Click para abrir
+    </div>
+    
+    <div class="bouquet-container" id="bouquet-container">
+        <div class="bouquet">
+            <div class="flower"><div class="stem"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="center"></div></div>
+            <div class="flower"><div class="stem"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="center"></div></div>
+            <div class="flower"><div class="stem"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="center"></div></div>
+        </div>
+    </div>
+    
+    <div class="message" id="message" style="display: none;">
+        Aunque no sean flores reales, esta hecho con todo mi corazon
+    </div>
+
+    <script>
+        function openEnvelope() {
+            document.querySelector('.envelope').style.display = 'none';
+            document.getElementById('bouquet-container').style.display = 'flex';
+            document.getElementById('message').style.display = 'block';
+        }
+
+        document.querySelectorAll('.flower').forEach(flower => {
+            flower.addEventListener('click', () => {
+                alert('Te amare, cuando esta flor se marchite');
+                flower.style.transform = 'scale(1.5) rotate(10deg)';
+                flower.style.opacity = '0.8';
+                setTimeout(() => {
+                    flower.style.transform = 'scale(1) rotate(0deg)';
+                    flower.style.opacity = '1';
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
+
